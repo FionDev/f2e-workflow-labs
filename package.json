@@ -1,0 +1,29 @@
+{
+  "name": "mylab",
+  "version": "1.0.0",
+  "description": "my front end lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-sync start --server --files=\"*\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FionDev/f2e-workflow-labs.git"
+  },
+  "author": "Fion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FionDev/f2e-workflow-labs/issues"
+  },
+  "homepage": "https://github.com/FionDev/f2e-workflow-labs#readme",
+  "dependencies": {
+    "jquery": "^1.11.0",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "bower": "^1.5.2",
+    "gulp": "^3.9.0",
+    "tap": "^1.4.0"
+  }
+}
