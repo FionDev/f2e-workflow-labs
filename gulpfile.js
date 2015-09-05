@@ -13,3 +13,13 @@ gulp.task('mytask2', function() {
 console.log('Task2 output');
 
 });
+
+gulp.task('output1',function(){
+gulp.src('assets/bootstrap/**/*.js').pipe(gulp.dest('output1'));
+
+});
+
+gulp.task('output2',function(){
+gulp.src('assets/bootstrap/**/*.js',{base:'assets'}).pipe(gulp.dest('output2'));
+
+});
