@@ -1,8 +1,14 @@
 var gulp = require('gulp');
 var del=require('del');
+//可被取代
 var concat=require('gulp-concat');
 var uglify=require('gulp-uglify');
 var rename=require('gulp-rename');
+//--------
+var $ = require('gulp-load-plugins')();
+
+var config=require('./config');
+
 
 gulp.task('default',['mytask1'], function() {
 // place code for your default task here
@@ -87,5 +93,43 @@ gulp.task('uglify-rename-app', function() {
 		.pipe(gulp.dest('assets'))
 		.pipe(uglify({mangle: false}))
 		.pipe(rename({extname: '.min.js'}))
+		.pipe(gulp.dest('assets'));
+});
+
+
+gulp.task('uglify-rename-config-app', function() {
+	gulp.src(config.appPath+'/**/*.module.js')
+		.pipe(gulp.dest('src'))
+		.pipe(concat('app.modules.js'))
+		.pipe(gulp.dest('assets'))
+		.pipe(uglify({mangle: false}))
+		.pipe(rename({extname: '.min.js'}))
+		.pipe(gulp.dest('assets'));
+
+	gulp.src([config.appPath+'/**/*.js', '!app/**/*.module.js'])
+		.pipe(gulp.dest('src'))
+		.pipe(concat('app.bundles.js'))
+		.pipe(gulp.dest('assets'))
+		.pipe(uglify({mangle: false}))
+		.pipe(rename({extname: '.min.js'}))
+		.pipe(gulp.dest('assets'));
+});
+
+
+gulp.task('uglify-rename-config-load-app', function() {
+	gulp.src(config.appPath+'/**/*.module.js')
+		.pipe(gulp.dest('src'))
+		.pipe(concat('app.modules.js'))
+		.pipe(gulp.dest('assets'))
+		.pipe($.uglify({mangle: false}))
+		.pipe($.rename({extname: '.min.js'}))
+		.pipe(gulp.dest('assets'));
+
+	gulp.src([config.appPath+'/**/*.js', '!app/**/*.module.js'])
+		.pipe(gulp.dest('src'))
+		.pipe(concat('app.bundles.js'))
+		.pipe(gulp.dest('assets'))
+		.pipe($.uglify({mangle: false}))
+		.pipe($.rename({extname: '.min.js'}))
 		.pipe(gulp.dest('assets'));
 });
